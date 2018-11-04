@@ -19,5 +19,5 @@ class Notification(Resource):
 
 class NotificationList(Resource):
     @jwt_required()
-    def get(self):
-        pass
+    def get(self, user_id):
+        return {"notifications": [notification.jsonify() for notification in NotificationModel.filter_by(user_id=user_id).all()]}

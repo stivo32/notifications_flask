@@ -8,8 +8,6 @@ class UserModel(db.Model):
     password = db.Column(db.String(20))
     notifications = db.relationship('NotificationModel', lazy=True)
 
-    user = db.real
-
     def __init__(self, username, password):
         self.username = username
         self.password = password
