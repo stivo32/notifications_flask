@@ -14,14 +14,18 @@ class NotificationModel(db.Model):
         self.message = message
         self.date = date
 
+    def jsonify(self):
+        return {"message": self.message,
+                "date": self.date}
+
     @classmethod
     def find_by_message(cls, message):
-        return cls.query.filter_by(name=message).all()
+        return cls.query.filter_by(name=message)
 
     @classmethod
     def find_by_date(cls, date):
-        return cls.query.filter_by(date=date).all()
+        return cls.query.filter_by(date=date)
 
     @classmethod
     def find_by_user_id(cls, user_id):
-        return cls.query.filter_by(user=user_id).all()
+        return cls.query.filter_by(user=user_id)
