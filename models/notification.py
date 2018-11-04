@@ -35,6 +35,6 @@ class NotificationModel(db.Model):
         return cls.query.filter_by(user_id=user_id).filter_by(message=message).first()
 
     @classmethod
-    def find_by_date_and_user_id(cls, date):
-        return cls.query.filter_by(date=date).first()
+    def find_by_date_and_user_id(cls, date, user_id):
+        return cls.query.filter_by(user_id=user_id).filter_by(date=date).first()
 
