@@ -1,5 +1,6 @@
 from db import db
 
+
 class NotificationModel(db.Model):
     __tablename__ = 'notifications'
     id = db.Column(db.Integer, primary_key=True)
@@ -8,7 +9,7 @@ class NotificationModel(db.Model):
     date = db.Column(db.Date())
 
     def __repr__(self):
-        return f"Notification ({self.message}, {self.date})"
+        return "Notification ({message}, {date})".format(message=self.message, date=self.date)
 
     def __init__(self, message, date):
         self.message = message
@@ -19,13 +20,10 @@ class NotificationModel(db.Model):
                 "date": self.date}
 
     @classmethod
-    def find_by_message(cls, message):
+    def find_by_message_and_user_id(cls, message):
         return cls.query.filter_by(name=message).first()
 
     @classmethod
-    def find_by_date(cls, date):
+    def find_by_date_and_user_id(cls, date):
         return cls.query.filter_by(date=date).first()
 
-    @classmethod
-    def find_by_user_id(cls, user_id):
-        return cls.query.filter_by(user=user_id).first()
