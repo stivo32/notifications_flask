@@ -13,3 +13,5 @@ api = Api(app=app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
 app.wsgi_app = ProxyFix(app.wsgi_app)
 api.add_resource(NotificationList, '/notifications')
+
+jwt = JWT(app, authenticate, identity)
