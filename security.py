@@ -1,4 +1,4 @@
-from resources.user import UserModel
+
 from werkzeug.security import safe_str_cmp
 
 

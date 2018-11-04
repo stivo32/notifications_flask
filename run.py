@@ -1,9 +1,10 @@
-from db import db
 from app import app
+from sqlalchemy import create_engine
+from db import db
+
 
 db.init_app(app)
+engine = create_engine('sqlite:///data.db')
+db.metadata.create_all(engine)
 
-
-@app.before_first_request
-def create_tables():  # create db with tables before first request
-    db.create_all()
+app.run(debug=True)
