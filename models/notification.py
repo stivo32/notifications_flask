@@ -20,12 +20,12 @@ class NotificationModel(db.Model):
 
     @classmethod
     def find_by_message(cls, message):
-        return cls.query.filter_by(name=message)
+        return cls.query.filter_by(name=message).first()
 
     @classmethod
     def find_by_date(cls, date):
-        return cls.query.filter_by(date=date)
+        return cls.query.filter_by(date=date).first()
 
     @classmethod
     def find_by_user_id(cls, user_id):
-        return cls.query.filter_by(user=user_id)
+        return cls.query.filter_by(user=user_id).first()
